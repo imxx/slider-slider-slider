@@ -51,8 +51,8 @@
                   goTo(currentIndex + 1)
                 }
 
-                document.getElementsByClassName("slider-left-arrow")[0].addEventListener("click", goToPrev);
-                document.getElementsByClassName("slider-right-arrow")[0].addEventListener("click", goToNext);
+                document.querySelector(".slider-left-arrow").addEventListener("click", goToPrev);
+                document.querySelector(".slider-right-arrow").addEventListener("click", goToNext);
     		}
     	}
     }
