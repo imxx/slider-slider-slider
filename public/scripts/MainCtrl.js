@@ -7,8 +7,6 @@
     MainCtrl.$inject = ["$scope"];
 
     function MainCtrl($scope) {
-    	var vm = this;
-
     	$scope.stage = 1;
     	$scope.slides = {
     		urlstring: "",
@@ -22,7 +20,7 @@
     			return;
     		else{
     			if($scope.stage == 1)
-    				converToObjects();
+    				convertToObjects();
     			$scope.stage++;
     		}
     	}
@@ -34,7 +32,7 @@
     			$scope.stage--;
     	}
 
-    	function converToObjects(){
+    	function convertToObjects(){
     		var urlsArray = $scope.slides.urlstring.replace(/^\[|\]$|'|"|\r\n|\n/ig, "").split(",");
     		$scope.slides.full = [];
     		angular.forEach(urlsArray, function(el){
