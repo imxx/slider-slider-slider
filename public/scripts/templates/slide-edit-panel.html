@@ -1,0 +1,9 @@
+<div>
+	<img ng-src={{slide.url}} height="100" width="100">
+	<label>
+		Caption
+		<input ng-model="slide.caption" placeholder="Caption" >
+	</label>
+	
+	<button class="btn btn-sm btn-danger" ng-click="slides.full.splice($index, 1)">Delete</button>
+</div>

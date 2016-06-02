@@ -1,0 +1,28 @@
+{
+  "name": "slider-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.7.9",
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.12.10",
+    "gulp": "^3.9.1",
+    "gulp-angular-templatecache": "^1.8.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-csso": "^2.0.0",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-nodemon": "^2.0.7",
+    "gulp-plumber": "^1.1.0",
+    "wiredep": "^4.0.0"
+  }
+}

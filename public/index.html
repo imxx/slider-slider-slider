@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>Slider</title>
+	<!-- bower:css -->
+	<!-- endbower -->
+	<link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/styles/main.css">
+</head>
+<body>
+	<div class="container" ng-controller="MainCtrl as vm">
+		<h1>Slider</h1>
+
+		<div class="animate-switch-container" 
+				ng-switch on="stage">
+		    <div class="animate-switch" ng-switch-when="1">
+		    	<div ng-include="'/scripts/templates/url-input.html'"></div>
+		    </div>
+		    <div class="animate-switch" ng-switch-when="2">
+		    	<div ng-include="'/scripts/templates/slide-editing-tile.html'"></div>
+		    </div>
+		    <div class="animate-switch" ng-switch-when="3">
+		    	<div ng-include="'/scripts/templates/slider.html'"></div>
+		    </div>
+  		</div>
+
+  		<div ng-include="'/scripts/templates/navigation-buttons.html'" class="buttons"></div>
+	</div>
+
+	<!-- bower:js -->
+	<script src="/angular/angular.js"></script>
+	<script src="/jquery/dist/jquery.js"></script>
+	<script src="/bootstrap/dist/js/bootstrap.js"></script>
+	<!-- endbower -->
+	<script type="text/javascript" src="/scripts/appModule.js"></script>
+	<script type="text/javascript" src="/scripts/MainCtrl.js"></script>
+	<script type="text/javascript" src="/scripts/directives/slider/sliderDirective.js"></script>
+	<script type="text/javascript" src="/scripts/templates.js"></script>
+</body>
+</html>
