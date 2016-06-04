@@ -79,3 +79,16 @@ gulp.task("cachetemplates", function(){
 				))
 				.pipe(gulp.dest('./public/scripts/'));
 });
+
+gulp.task("uglify", function(){
+	return gulp.src("./public/scripts/MainCtrl.js")
+				.pipe($.uglify())
+				.pipe()
+				.pipe(gulp.dest("./public/scripts/min/"));
+});
+
+gulp.task("rename", function(){
+	return gulp.src("./public/scripts/min/MainCtrl.js")
+				.pipe($.rename("MainCtrl.min.js"))
+				.pipe(gulp.dest("./public/scripts/min/"))
+});

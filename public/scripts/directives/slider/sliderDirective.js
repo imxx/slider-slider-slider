@@ -15,46 +15,61 @@
     		},
 
     		link: function(scope, el, attrs){
-                var ul = el.find("ul");
+				var slidesData = scope.slides,
+					slidesLength = slidesData.length,
+					slidesHtml = new Array(slidesData.length),
+					currentIndex = { value: 0},
+					ul = el.find("ul"),
+					ulWidth,
+					i;
 
-    			angular.forEach(scope.slides, function(item, index){
-    				var slide = angular.element("<li></li>");
-                    var img = angular.element("<img src='" + item.url + "'>");
-    				var caption = angular.element("<p></p>");
-                    caption.html(item.caption);
-                    img.addClass("slider-image");
-                    caption.addClass("slider-caption");
-                    $(slide).append(img)
-                            .append(caption);
-    				$(ul).append(slide)
-    			});
+				for(i = 0; i < slidesData.length; i++){
+					slidesHtml[i] = [
+						"<li>",
+							"<img class='slider-image' src='", slidesData[i].url, "'>",
+							"<p class='slider-caption'>", 
+								//slidesData[i].caption ? slidesData[i].caption : "",
+								slidesData[i].caption || "",
+							"</p>",
+						"</li>"
+					].join("");
+				}
+				
+				ul[0].innerHTML = slidesHtml.join("");
+				
+				ulWidth = slidesData.length * ul.find("li")[0].clientWidth;
+                ul[0].style.width = ulWidth + "px";
+				
+                el[0].querySelector(".slider-left-arrow")
+					 .addEventListener("click", goToPrev.bind(null, currentIndex, ul, slidesData.length));
 
-                var lis = ul.children();
-                ul[0].style.width = (lis.length * lis[0].clientWidth) + "px";
-
-                var currentIndex = 0;
-
-                function goTo(index) {
-                  if (index < 0 || index > lis.length - 1)
-                    return;
-
-                  ul[0].style.left = '-' + (100 * index) + '%';
-             
-                  currentIndex = index;
-                }
-                 
-                function goToPrev() {
-                  goTo(currentIndex - 1)
-                }
-                 
-                function goToNext() {
-                  goTo(currentIndex + 1)
-                }
-
-                document.querySelector(".slider-left-arrow").addEventListener("click", goToPrev);
-                document.querySelector(".slider-right-arrow").addEventListener("click", goToNext);
-    		}
+                el[0].querySelector(".slider-right-arrow")
+					 .addEventListener("click", goToNext.bind(null, currentIndex, ul, slidesData.length));
+			}
     	}
+		
+		/*
+		* @param index 		  index of slide to be visible
+		* @param currentIndex index of current slide
+		* @param ul			  list of slides
+		* @param length		  number of slides
+		*/
+		function goTo(index, currentIndex, ul, length) {
+			if (index < 0 || index > length - 1)
+				return;
+
+		  ul[0].style.left = '-' + (100 * index) + '%';
+	 
+		  currentIndex.value = index;
+		}
+		 
+		function goToPrev(currentIndex, ul, length) {
+		    goTo(currentIndex.value - 1, currentIndex, ul, length)
+		}
+		 
+		function goToNext(currentIndex, ul, length) {
+		  goTo(currentIndex.value + 1, currentIndex, ul, length)
+		}
     }
 
 })();
