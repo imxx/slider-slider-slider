@@ -23,12 +23,11 @@
 					ulWidth,
 					i;
 
-				for(i = 0; i < slidesData.length; i++){
+				for(i = 0; i < slidesLength; i++){
 					slidesHtml[i] = [
 						"<li>",
 							"<img class='slider-image' src='", slidesData[i].url, "'>",
 							"<p class='slider-caption'>", 
-								//slidesData[i].caption ? slidesData[i].caption : "",
 								slidesData[i].caption || "",
 							"</p>",
 						"</li>"
@@ -41,10 +40,10 @@
                 ul[0].style.width = ulWidth + "px";
 				
                 el[0].querySelector(".slider-left-arrow")
-					 .addEventListener("click", goToPrev.bind(null, currentIndex, ul, slidesData.length));
+					 .addEventListener("click", goToPrev.bind(null, currentIndex, ul, slidesLength));
 
                 el[0].querySelector(".slider-right-arrow")
-					 .addEventListener("click", goToNext.bind(null, currentIndex, ul, slidesData.length));
+					 .addEventListener("click", goToNext.bind(null, currentIndex, ul, slidesLength));
 			}
     	}
 		
