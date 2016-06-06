@@ -47,12 +47,13 @@
             }
         }
         
+        
         /*
-		* @param index 		  index of slide to be visible
-		* @param currentIndex index of current slide
-		* @param ul			  list of slides
-		* @param length		  number of slides
-		*/
+        * @param index        index of slide to be visible
+        * @param currentIndex index of current slide
+        * @param ul           list of slides
+        * @param length       number of slides
+        */
         function goTo(index, currentIndex, ul, length) {
             if (index < 0 || index > length - 1)
                 return;
